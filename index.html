@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CiC 4.0 소개 · 모바일</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap">
+<style>
+@font-face{font-family:"Pretendard Variable";font-weight:45 920;font-style:normal;font-display:swap;src:url("fonts/PretendardVariable.woff2") format("woff2-variations")}
+body{margin:0;background:#fff}
+[hidden]{display:none!important}
+a{color:#326BFA}a:hover{color:#8658D5}
+:where(.pg) *{box-sizing:border-box;margin:0;padding:0}
+:where(.pg) button{font:inherit;border:0;background:none;cursor:pointer;color:inherit}
+:where(.pg) img{display:block;max-width:100%}
+.pg{--dn:#10112D;--nv:#1C1B3E;--bl:#326BFA;--pu:#8658D5;--sl:#67728E;--bd:#E9E2F8;--tile:#F1ECFC;--ko:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;--en:Inter,"Pretendard Variable","Noto Sans KR",sans-serif;font-family:var(--ko);font-size:15px;color:var(--sl);word-break:keep-all;-webkit-font-smoothing:antialiased;line-height:1.7;max-width:480px;margin:0 auto;background:#fff;overflow-x:hidden}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{padding:0 16px}
+.sec{padding:56px 0}
+
+/* review bar + header */
+.review{background:#1C1B3E;color:rgba(255,255,255,.86);font-size:12px;line-height:1.5;text-align:center;padding:8px 16px}
+.review b{color:#fff}
+.hd{position:sticky;top:0;z-index:30;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.hd .logo{height:22px;width:auto;fill:#000;display:block}
+.lang{appearance:none;-webkit-appearance:none;font:inherit;font-size:13px;font-weight:600;color:var(--dn);height:36px;padding:0 30px 0 14px;border:1px solid var(--bd);border-radius:999px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2367728E' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(110deg,#DCEBFF 0%,#F3F5FF 50%,#E4D9FF 100%);padding:72px 16px 64px;text-align:center}
+.hero__grid{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(103,114,142,.08) 1px,transparent 1px);background-size:120px 100%;pointer-events:none}
+.hero__sq{position:absolute;border-radius:28px;background:rgba(134,88,213,.08);border:1px solid rgba(134,88,213,.08);pointer-events:none}
+.hero h1{position:relative;font-family:var(--en);font-size:38px;font-weight:800;letter-spacing:-.035em;line-height:1.12;color:var(--dn)}
+.gai{background:linear-gradient(110deg,#8658D5,#7B6CF2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{position:relative;margin-top:18px;font-size:16px;font-weight:500;line-height:1.6}
+
+/* section labels / titles */
+.pill{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px 0 13px;border-radius:999px;background:#6268D9;color:#fff;font-family:var(--en);font-size:13px;font-weight:700;white-space:nowrap}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.38);flex:none;margin-right:2px}
+.pill .dot{color:rgba(255,255,255,.55)}
+.pill .ko{font-family:var(--ko);font-weight:500;color:rgba(255,255,255,.9)}
+.ttl{margin-top:18px;font-size:26px;font-weight:800;line-height:1.38;letter-spacing:-.025em;color:var(--dn)}
+.sub{margin-top:12px;font-size:15px;line-height:1.7}
+.mid{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:20px;font-weight:700;color:var(--dn);line-height:1.4}
+.mid small{font-size:13px;font-weight:400;color:var(--sl);white-space:nowrap}
+
+/* slider (공통) */
+.sl{margin-top:16px;--acc:#6268D9}
+.sl__head{display:flex;align-items:center;gap:12px;padding:0 16px}
+.sl__bars{flex:1;display:flex;gap:6px}
+.sl__bar{flex:1;height:28px;display:flex;align-items:center;padding:0;border-radius:4px}
+.sl__bar i{display:block;width:100%;height:4px;border-radius:999px;background:#E3E6EF;transition:background .25s ease}
+.sl__bar.is-on i{background:var(--acc)}
+.sl__bar:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.sl__cnt{flex:none;min-width:36px;text-align:right;font-family:var(--en);font-size:12px;font-weight:700;color:var(--dn)}
+.sl__cnt span{color:#9AA3BA;font-weight:600}
+.sl__track{position:relative;display:flex;align-items:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px;padding:10px 16px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.sl__track::-webkit-scrollbar{display:none}
+.sl__slide{flex:0 0 calc(100% - 44px);min-width:0;scroll-snap-align:start}
+
+/* For Me */
+.fm__lead{margin-top:32px;font-size:20px;font-weight:700;line-height:1.5;color:var(--dn)}
+.fm__flow{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.fm__step{display:flex;gap:12px;align-items:flex-start}
+.fm__num{flex:none;font-family:var(--en);font-size:15px;font-weight:800;line-height:1.55;color:var(--pu)}
+.fm__step h3{font-size:17px;font-weight:700;color:var(--dn);line-height:1.55}
+.fm__step p{margin-top:2px;font-size:14px;line-height:1.6}
+.fm__arrow{color:#A8AFC4;margin-left:2px;transform:rotate(90deg);width:20px;height:20px}
+.vframe{margin-top:32px;border:1px solid var(--bd);border-radius:20px;overflow:hidden;background:#fff}
+.vframe video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#FAF8FF}
+.fx{margin-top:56px}
+.cur{background:#fff;border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.cur__tag{display:inline-flex;align-items:center;height:24px;margin:8px 8px 6px;padding:0 10px;border-radius:999px;background:#EAF1FF;color:#326BFA;border:1px solid #C8DAFF;font-size:12px;font-weight:700;white-space:nowrap}
+.cur img{width:100%;height:auto;aspect-ratio:2.3/1;object-fit:cover;object-position:center top;border-top:1px solid var(--bd)}
+.fx__txt{padding:16px 16px 0}
+.fx__txt h4{font-size:18px;font-weight:700;color:var(--dn)}
+.fx__txt p{margin-top:6px;font-size:14.5px;line-height:1.65}
+.fx__item{margin-top:36px;padding:0 16px}
+.fx__item .fx__txt{padding:0 0 14px}
+.fx__img{border:1px solid var(--bd);border-radius:14px;overflow:hidden;aspect-ratio:2/1}
+.fx__img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+
+/* AI Overview */
+.as{--c:#326BFA}
+.as .sl{--acc:#326BFA}
+.ttl .bl{color:#326BFA}
+.vbtn{margin-top:22px;display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 20px 0 8px;border-radius:999px;background:#fff;border:1px solid #E3EAF7;box-shadow:0 4px 12px rgba(16,17,45,.06);font-size:15px;font-weight:700;color:var(--dn)}
+.vbtn__play{width:34px;height:34px;border-radius:50%;background:#326BFA;display:grid;place-items:center;color:#fff}
+.vbtn__play svg{width:15px;height:15px;margin-left:2px;fill:#fff;stroke:none}
+.ascard{background:#F5F8FF;border:1px solid #E3EAF7;border-radius:18px;padding:16px}
+.ascard__hd{display:flex;align-items:center;gap:12px}
+.ascard__ic{width:40px;height:40px;border-radius:12px;background:#fff;box-shadow:0 4px 12px rgba(50,107,250,.14);display:grid;place-items:center;color:#326BFA;flex:none}
+.ascard__ic svg{width:20px;height:20px}
+.ascard h4{font-size:17px;font-weight:700;color:var(--dn);line-height:1.4}
+.ascard p{margin-top:10px;font-size:14px;line-height:1.65}
+.shot{position:relative;margin-top:14px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid #E3EAF7;line-height:0}
+.shot>img{width:100%;height:auto}
+.mark{position:absolute;border:2px solid #326BFA;border-radius:999px;box-shadow:0 0 0 3px rgba(50,107,250,.18);pointer-events:none}
+.mark--box{border-radius:8px}
+.shot--zoom{aspect-ratio:1035/800}
+.shot--zoom .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top;opacity:.45;filter:saturate(.8)}
+.zoom{position:absolute;top:50%;right:5%;transform:translateY(-50%);width:48%;display:flex;flex-direction:column;gap:8px}
+.zoom img{width:100%;height:auto;background:#fff;border:2px solid #326BFA;border-radius:10px;box-shadow:0 0 0 3px rgba(50,107,250,.16),0 8px 20px rgba(16,17,45,.10)}
+
+/* Learning Catalog */
+.xp .sl{--acc:#625FEA}
+.ttl .vi{color:#625FEA}
+.xtab{display:flex;gap:10px;align-items:flex-start;padding:2px 2px 12px}
+.xtab__n{flex:none;font-family:var(--en);font-size:15px;font-weight:800;line-height:1.5;color:#625FEA}
+.xtab b{display:block;font-size:17px;font-weight:700;color:var(--dn);line-height:1.45}
+.xtab span{display:block;margin-top:2px;font-size:13.5px;line-height:1.55}
+.xm{position:relative;border:1px solid #E3EAF7;border-radius:16px;overflow:hidden;background:#fff}
+.xm__crumb{display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-bottom:1px solid #E3EAF7;background:#FAFBFC;font-size:11.5px;color:var(--dn);white-space:nowrap}
+.xm__crumb i{font-style:normal;color:#9AA6BF}
+.xm__in{padding:12px}
+.xm__t{font-size:15px;font-weight:700;color:var(--dn)}
+.xm__lb{font-size:10.5px;color:#9AA6BF;margin-bottom:6px}
+.hl{border-radius:10px;padding:8px;box-shadow:0 0 0 2px #625FEA,0 0 0 6px rgba(98,95,234,.16)}
+.dim{opacity:.4}
+.cats{display:flex;flex-wrap:wrap;gap:5px}
+.cats span{font-size:11.5px;padding:4px 10px;border-radius:999px;border:1px solid #E3E6EF;color:var(--dn)}
+.cats span.is-on{border-color:#625FEA;color:#625FEA;font-weight:700}
+.xtypes{display:flex;flex-wrap:wrap;gap:5px}
+.xtypes span{font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:999px;background:#EEF0F4;color:var(--dn)}
+.xtypes span.is-on{background:#326BFA;color:#fff}
+.xgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.xcard__th{border-radius:8px;overflow:hidden;aspect-ratio:215/120;background:#EEF0F4}
+.xcard__th img{width:100%;height:100%;object-fit:cover}
+.xcard__k{margin-top:6px;font-size:10px;color:var(--sl);line-height:1.4}
+.xcard h5{margin-top:2px;font-size:12.5px;font-weight:700;line-height:1.4;color:var(--dn);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:35px}
+.tg{margin-top:5px;display:flex;flex-wrap:wrap;gap:3px}
+.tg i{font-style:normal;font-size:9.5px;font-weight:600;padding:1px 6px;border-radius:999px;line-height:1.5}
+.t-ai{background:#2E9BEA;color:#fff}.t-on{background:#C9D4F5;color:#4A5FA8}.t-reg{background:#BFE3CF;color:#3C8A5E}.t-book{background:#fff;color:#67728E;border:1px solid #C9CFDA}
+.xgrp+.xgrp{margin-top:12px}
+.xgrp h6{font-size:12.5px;font-weight:700;color:var(--dn);margin-bottom:6px}
+.xbox{background:#F5F6F8;border-radius:10px;padding:2px 10px}
+.xchk{display:flex;align-items:center;gap:10px;min-height:36px;font-size:13px;color:var(--dn);cursor:pointer}
+.xchk input{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:1px solid #C9CFDA;border-radius:4px;background:#fff;margin:0;flex:none;display:grid;place-items:center;cursor:pointer}
+.xchk input:checked{background:#326BFA;border-color:#326BFA}
+.xchk input:checked::after{content:"";width:8px;height:4px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.xsel{display:flex;flex-wrap:wrap;align-items:center;gap:6px;min-height:36px}
+.xsel__lb{font-size:11.5px;font-weight:600;color:var(--sl);margin-right:2px}
+.xsel__none{font-size:12px;color:#9AA6BF}
+.chip{display:inline-flex;align-items:center;gap:7px;height:30px;padding:0 9px 0 11px;border-radius:3px;background:#EFF7FF;border:1px solid #2D94F9;color:#111;font-size:12.5px;font-weight:500}
+.chip svg{width:12px;height:12px;color:#909090;stroke-width:1.6}
+.reset{display:inline-flex;align-items:center;gap:5px;height:30px;padding:0 4px;color:#111;font-size:12.5px;font-weight:500}
+.reset svg{width:13px;height:13px;color:#555}
+.xbar{display:flex;align-items:center;gap:10px;margin-top:10px}
+.xcount{font-size:13px;font-weight:600;color:var(--dn);white-space:nowrap}
+.xcount b{color:#326BFA;font-family:var(--en)}
+.xsearch{flex:1;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #C9CFDA;padding:4px 2px;font-size:11px;color:#9AA6BF}
+.xsearch svg{width:14px;height:14px}
+.xpop{position:absolute;z-index:3;right:-4px;top:-6px;width:240px;max-width:calc(200% + 2px);padding:14px;background:#fff;border-radius:12px;border:1.5px solid #625FEA;box-shadow:0 0 0 5px rgba(98,95,234,.15),0 12px 32px rgba(16,17,45,.14)}
+.xpop h5{font-size:13.5px;font-weight:700;line-height:1.45;color:var(--dn)}
+.xpop__kw{margin-top:6px;font-size:11px;line-height:1.5;color:#2457C5;padding-bottom:8px;border-bottom:1px solid #E3EAF7}
+.xpop__meta{margin-top:6px;display:flex;flex-wrap:wrap;gap:3px 10px;font-size:11px;color:var(--sl)}
+.xpop__meta em{font-style:normal;font-size:10px;font-weight:600;color:var(--dn);border:1px solid #C9CFDA;border-radius:4px;padding:0 5px}
+.xpop ul{margin-top:8px;padding-left:14px;font-size:11px;line-height:1.5;list-style:disc}
+.xpop__ft{margin-top:8px;padding-top:8px;border-top:1px solid #E3EAF7;font-size:11px}
+.xpop__btns{margin-top:10px;display:flex;gap:8px}
+.xpop__bm{width:34px;height:32px;border:1px solid #E3EAF7;border-radius:6px;display:grid;place-items:center}
+.xpop__bm svg{width:14px;height:14px}
+.xpop__go{flex:1;height:32px;border-radius:6px;background:#0B45C9;color:#fff;font-size:12.5px;font-weight:700;display:grid;place-items:center}
+.xcard--on{position:relative;z-index:2}
+.xm:has(.xcard--on) .xm__in{padding-bottom:56px}
+.xcard--dim{opacity:.5}
+.xpop ul li+li{margin-top:2px}
+
+/* Convenience */
+.mc{background:#F0F4F9}
+.mc .sl{--acc:#426DC5}
+.ttl .mb{color:#426DC5}
+.mcard{background:#fff;border-radius:18px;overflow:hidden}
+.mcard__body{padding:14px 14px 0}
+.mshot{position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:#fff;border:1px solid #E6EAF2;container-type:inline-size}
+.mshot .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top}
+.mz{position:absolute;display:block;height:auto;border-radius:8px;background:#fff;box-shadow:0 0 0 1.5px #426DC5,0 8px 20px rgba(16,17,45,.14)}
+.mz2{right:4%;top:30%;width:54%}
+.mzc{right:1.5%;top:27%;width:64%}
+.zbtn{position:absolute;left:4%;top:44%;width:37%;aspect-ratio:410/58;display:flex;align-items:center;justify-content:center;gap:.5em;border-radius:6px;background:#0047B1;color:#fff;font-size:3.6cqw;box-shadow:0 0 0 2px #fff,0 0 0 3.5px #426DC5,0 8px 20px rgba(16,17,45,.14)}
+.zlb{position:absolute;left:36.4%;top:45%;transform:translateY(-50%);display:flex;align-items:center;gap:.3em;padding:.15em .4em .15em .3em;background:#fff;border-radius:4px;color:#111;font-size:2.15cqw;font-weight:700;line-height:1.2;white-space:nowrap}
+.zlb svg{width:1.05em;height:1.05em}
+.ztx{position:absolute;top:37.3%;transform:translate(-50%,-50%);padding:.1em .45em;background:#fff;font-size:2cqw;line-height:1.2;white-space:nowrap}
+.ztx--on{left:50.3%;color:#0047B1;font-weight:700}.ztx--g{left:82.6%;color:#222;font-weight:500}
+.zpill{position:absolute;right:2.4%;top:30.2%;transform:translateY(-50%);padding:.3em .7em;border-radius:999px;background:#2973E2;color:#fff;font-size:1.6cqw;font-weight:500;line-height:1.2;white-space:nowrap;box-shadow:0 0 0 2px #fff}
+.zml{position:absolute;left:1.6%;right:1.6%;top:4%;border-radius:1.4cqw;overflow:hidden;background:#fff;box-shadow:0 0 0 1.5px #426DC5,0 2cqw 5cqw rgba(16,17,45,.18);white-space:nowrap}
+.zml1{display:flex;align-items:center;gap:3.2cqw;padding:1.7cqw 2.4cqw;font-size:2.7cqw;color:#222}
+.zml1 i{width:1px;height:2.6cqw;background:#D5D9E0;margin:0 -1cqw}
+.zml1 .is-on{color:#2F80ED;font-weight:700}
+.zml2{display:flex;justify-content:space-between;padding:1.5cqw 1.6cqw;background:#2E7BF0;color:rgba(255,255,255,.9);font-size:1.62cqw;letter-spacing:-.03em}
+.zml2 .is-on{color:#fff;font-weight:700}
+.mcard h3{margin-top:14px;padding:0 4px;font-family:var(--en);font-size:21px;font-weight:800;color:var(--dn)}
+.mcard__intro{margin-top:2px;padding:0 4px;font-size:14.5px;line-height:1.6}
+.mnew{margin-top:12px;padding:11px 14px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px #E3E9F4}
+.mnew__lb{display:block;font-family:var(--en);font-size:11.5px;font-weight:700;color:#426DC5}
+.mnew ul{margin-top:4px;list-style:none;display:flex;flex-direction:column;gap:3px}
+.mnew li{display:flex;align-items:center;gap:7px;font-size:14.5px;font-weight:600;color:var(--dn)}
+.mnew li svg{width:15px;height:15px;color:#426DC5;flex:none}
+.mmore{margin-top:14px;width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;gap:6px;background:#426DC5;color:#fff;font-size:15px;font-weight:700}
+.mmore.is-on{background:#2F4E95}
+.mdet{margin-top:8px;background:#fff;border-radius:14px;padding:12px;border:1.5px solid #426DC5}
+.mdet__lb{display:inline-block;font-family:var(--en);font-size:11px;font-weight:700;color:#426DC5;background:#EEF3FB;border-radius:999px;padding:2px 9px}
+.mdet__t{margin-top:6px;font-size:16px;font-weight:700;color:var(--dn);line-height:1.4}
+.mdet__sub{margin-top:2px;font-size:13px;line-height:1.55}
+.mdet__note{display:block;margin-top:2px;font-size:11.5px;color:#8A93A8}
+.mf{margin-top:10px}
+.mf+.mf{padding-top:10px;border-top:1px solid #E9EDF4}
+.mf__no{display:block;margin-top:8px;font-family:var(--en);font-size:11px;font-weight:800;color:#426DC5;letter-spacing:.04em}
+.mf h4{font-size:15px;font-weight:700;color:var(--dn);line-height:1.4}
+.mf p{margin-top:2px;font-size:13px;line-height:1.55}
+.mimg{position:relative;border-radius:8px;overflow:hidden;background:#fff;box-shadow:inset 0 0 0 1px #E3E9F4;aspect-ratio:16/10;container-type:inline-size}
+.mimg>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top}
+.mimg--feed{aspect-ratio:16/8}
+.mimg--feed>img{opacity:.5}
+.mtool{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:97%;padding:5px 8px;background:#fff;border-radius:8px;box-shadow:0 0 0 2px #426DC5,0 10px 24px rgba(66,109,197,.22)}
+.mtool img{width:100%;height:auto}
+.mcv{border-radius:8px;overflow:hidden;background:#fff;box-shadow:inset 0 0 0 1px #E3E9F4}
+.mcv__opt{display:flex;justify-content:center;gap:4px;padding:2px 6px;border-bottom:1px solid #E3E9F4}
+.mcv__r{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:0 8px;font-size:12px;color:#5B6478;white-space:nowrap}
+.mcv__r i{width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #C5CBD6;background:#fff}
+.mcv__r.is-on{color:#111;font-weight:600}
+.mcv__r.is-on i{box-shadow:inset 0 0 0 1.5px #426DC5,inset 0 0 0 3.5px #fff;background:#426DC5}
+.mcv__scr{position:relative;aspect-ratio:2/1;background:#F7F9FC}
+.mcv__scr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0;transition:opacity .45s ease}
+.mcv__scr img.is-on{opacity:1}
+.mgt{position:absolute;left:2%;top:29%;width:60%;padding:1.6cqw 0;list-style:none;background:#fff;border-radius:2.4cqw;box-shadow:0 0 0 1.5px #426DC5,0 3cqw 7cqw rgba(16,17,45,.18)}
+.mgt li{display:flex;align-items:center;gap:1.4cqw;height:7.4cqw;padding-right:2.4cqw;font-size:3.9cqw;color:#222;white-space:nowrap;line-height:1}
+.mgt .r1{padding-left:3cqw}.mgt .r2{padding-left:7cqw}.mgt .r3{padding-left:11.5cqw}
+.mgt svg{width:3.6cqw;height:3.6cqw;color:#555;flex:none}
+.mgt b{width:1.3cqw;height:1.3cqw;margin:0 1.15cqw;border-radius:50%;background:#B8BEC9;flex:none}
+.mgt .ln{flex:1;min-width:2cqw;border-top:1px dashed #D12BE0}
+.mgt .tag{flex:none;padding:.5cqw 2.4cqw;border-radius:999px;background:linear-gradient(90deg,#C81CE6,#7A3BF2);color:#fff;font-size:3.5cqw;font-weight:700;line-height:1.25}
+.mlf__mk{position:absolute;border-radius:5px;box-shadow:0 0 0 2px #426DC5,0 0 0 4px rgba(66,109,197,.18)}
+.mlb__bm{position:absolute;width:7.4cqw;height:7.4cqw;transform:translate(-50%,-50%);display:grid;place-items:center;border-radius:50%;background:#fff;box-shadow:0 0 0 1.5px #426DC5,0 1.5cqw 4cqw rgba(16,17,45,.18)}
+.mlb__bm svg{width:3.4cqw;height:4cqw}
+
+/* Global */
+.ttl .gp{color:#795BE3}
+.gstat{padding:28px 0;border-top:1px solid #E6E9F2}
+.gstat:first-child{border-top:0;padding-top:28px}
+.gstat__ic{display:block;color:#8658D5}
+.gstat__ic svg{width:34px;height:34px;stroke-width:1.5}
+.gstat strong{display:block;margin-top:14px;font-family:var(--en);font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1.1;color:#795BE3}
+.gstat strong em{font-style:normal;font-family:var(--ko);font-size:18px;font-weight:700;margin-left:4px;letter-spacing:0;color:var(--dn)}
+.gstat strong .from{font-size:22px;color:#8A93A8}
+.gstat h3{margin-top:12px;font-size:18px;font-weight:700;color:var(--dn);line-height:1.45}
+.gstat p{margin-top:6px;font-size:14.5px;line-height:1.7}
+
+/* CTA + app */
+.start{margin:8px 16px 56px;padding:28px 22px;border-radius:20px;background:linear-gradient(110deg,#E2EDFC 0%,#F0EEFC 50%,#EAE1FC 100%)}
+.start__en{font-family:var(--en);font-size:12px;font-weight:700;letter-spacing:.06em;color:#8658D5}
+.start h2{margin-top:8px;font-size:23px;font-weight:800;line-height:1.38;letter-spacing:-.025em;color:var(--dn)}
+.start a{margin-top:20px;display:flex;align-items:center;justify-content:center;gap:10px;height:54px;border-radius:999px;background:#1C1B3E;color:#fff;font-size:16px;font-weight:700;text-decoration:none;box-shadow:0 6px 20px rgba(50,107,250,.18)}
+.app{background:#1C1B3E;padding:44px 16px}
+.app__en{font-family:var(--en);font-size:13px;font-weight:600;color:rgba(255,255,255,.6)}
+.app h2{margin-top:8px;font-size:21px;font-weight:700;line-height:1.45;color:#fff}
+.qrs{margin-top:22px;display:flex;gap:12px}
+.qr{width:104px;background:#fff;border-radius:14px;padding:10px;text-align:center}
+.qrcode{display:block;width:100%;height:auto;aspect-ratio:1}
+.qr strong{display:block;margin-top:6px;font-family:var(--en);font-size:12.5px;font-weight:700;color:var(--dn);line-height:1.2}
+.ft{padding:28px 16px;font-size:12px;border-top:1px solid var(--bd)}
+
+/* video modal */
+.vm{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px}
+.vm__dim{position:absolute;inset:0;background:rgba(16,17,45,.72)}
+.vm__box{position:relative;width:100%;max-width:480px;border-radius:16px;overflow:hidden;background:#000}
+.vm__box video{display:block;width:100%;aspect-ratio:16/9;background:#000}
+.vm__x{position:absolute;right:8px;top:8px;z-index:2;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;color:var(--dn)}
+.vm__x svg{width:18px;height:18px}
+</style>
+</head>
+<body>
+<div class="pg">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-play-fill" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-message-dots" viewBox="0 0 24 24"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.1A8.5 8.5 0 1 1 21 12z"/><path d="M8 12h.01M12 12h.01M16 12h.01" stroke-width="2.6"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+  <symbol id="i-languages" viewBox="0 0 24 24"><path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></symbol>
+  <symbol id="i-captions" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M7 15h4M15 15h2M7 11h2M13 11h4"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-user-check" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></symbol>
+</svg>
+
+<div class="review"><b>내부 검토용 초안</b> · 모바일 구성안</div>
+
+<header class="hd">
+  <a href="#top" aria-label="CiC 홈"><svg class="logo" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 710 318"><path fill-rule="evenodd" d="M331.5 316.6C325.1 313.8 325.5 321.2 325.2 214.2C324.9 105.8 324.5 113.1 331.7 111.0C334.2 110.3 344.5 110.0 361.3 110.2L387.2 110.5L389.6 113.3L392.0 116.1L392.0 212.5C392.0 271.3 391.6 309.8 391.0 311.4C390.5 312.8 388.9 314.7 387.3 315.7C384.9 317.3 381.7 317.5 359.5 317.7C340.3 317.9 333.8 317.7 331.5 316.6ZM144.0 315.0C134.0 313.2 114.6 308.7 109.5 307.1C102.7 304.9 84.5 296.9 81.1 294.6C79.1 293.2 75.7 291.1 73.5 289.8C52.4 277.8 29.6 254.3 19.0 233.6C17.0 229.7 14.4 224.7 13.2 222.5C9.6 215.7 3.9 201.8 2.4 196.0C0.2 187.6 0.2 126.3 2.4 118.7C4.5 111.4 13.3 90.8 15.8 87.3C16.8 85.8 19.0 82.1 20.4 79.2C27.0 66.2 55.4 36.5 67.0 30.5C68.9 29.5 73.1 27.0 76.2 24.8C79.3 22.7 83.2 20.5 84.7 19.9C86.2 19.4 90.2 17.5 93.5 15.8C99.7 12.6 110.1 9.2 130.0 3.9L141.5 0.8L169.5 0.9C193.7 0.9 198.4 1.2 204.5 2.8C211.5 4.7 226.1 8.8 235.6 11.5C241.0 13.1 244.2 15.8 245.9 20.3C246.6 22.1 247.0 36.1 247.0 59.4C247.0 106.1 248.1 104.5 225.7 89.9C214.1 82.5 212.3 81.7 201.4 78.9C194.8 77.2 187.9 75.4 186.0 75.0C178.6 73.0 167.2 73.9 151.6 77.6C138.0 80.7 135.5 81.7 127.0 86.8C114.6 94.1 103.4 104.9 97.0 115.5C90.8 125.7 90.2 127.3 87.9 139.5C86.9 145.0 85.6 151.5 85.1 154.0C84.1 159.1 84.7 163.5 88.5 179.5C94.2 203.0 110.2 222.1 133.6 233.3C150.0 241.1 168.5 243.5 189.8 240.6C199.6 239.3 202.7 238.4 212.3 233.9C218.5 231.1 226.1 226.8 229.3 224.4C232.5 222.0 237.0 219.5 239.2 218.8C243.0 217.7 243.4 217.8 245.1 219.9C246.9 222.0 247.0 224.6 247.2 254.4C247.3 272.0 247.3 288.5 247.2 290.9C246.7 301.0 238.1 306.1 214.5 310.4C206.2 311.9 195.8 314.0 191.3 315.1C180.4 317.6 157.6 317.6 144.0 315.0ZM608.8 314.9C605.1 313.9 595.8 311.9 588.3 310.5C577.8 308.6 572.6 307.0 566.5 304.1C562.1 302.0 556.9 299.8 555.0 299.1C550.3 297.6 536.1 289.3 528.0 283.3C524.4 280.7 515.6 272.6 508.4 265.4C493.7 250.8 486.4 240.7 477.2 222.3C472.3 212.5 470.6 207.6 467.1 193.3L462.8 176.2L463.2 153.8L463.7 131.5L468.3 115.9C473.0 100.1 479.5 86.2 486.9 76.0C488.6 73.5 492.8 67.7 496.2 63.0C504.3 51.6 519.3 38.0 532.5 30.0C534.7 28.7 537.7 26.6 539.2 25.4C540.7 24.2 543.9 22.3 546.2 21.3C548.6 20.3 553.7 17.8 557.7 15.8C561.7 13.7 569.8 10.7 575.7 9.1C581.6 7.5 588.1 5.4 590.1 4.6C596.7 1.8 607.2 0.9 633.0 0.8C660.5 0.7 665.6 1.3 680.5 6.0C685.5 7.6 692.6 9.6 696.4 10.5C709.4 13.4 709.0 11.9 709.2 56.7C709.3 77.0 709.0 94.5 708.6 95.8C708.2 97.0 707.0 98.5 705.9 99.0C703.6 100.3 701.5 99.3 696.2 94.6C691.8 90.8 675.9 81.7 671.0 80.2C669.1 79.6 661.6 77.9 654.5 76.5C643.7 74.2 640.1 73.9 633.1 74.4C620.9 75.3 601.7 80.4 595.0 84.4C592.0 86.3 588.0 88.5 586.1 89.5C577.6 93.8 564.5 109.1 557.7 122.6C551.0 135.9 549.8 141.0 549.7 156.3C549.7 171.2 550.9 179.2 554.5 186.5C555.8 189.2 558.2 194.4 559.8 198.0C562.1 203.3 564.7 206.6 573.7 215.6C584.2 226.0 585.5 227.0 597.2 232.8C608.2 238.2 610.7 239.0 620.3 240.4C633.6 242.4 642.5 242.4 655.5 240.5C664.2 239.3 667.0 238.4 677.0 233.4C683.3 230.2 691.3 225.4 694.8 222.8C701.9 217.4 705.2 216.8 707.6 220.5C709.0 222.7 709.2 227.5 709.2 259.4C709.3 293.4 709.1 296.1 707.4 299.1C704.9 303.4 698.6 306.5 688.0 308.5C683.3 309.4 674.5 311.2 668.5 312.5C651.2 316.3 645.5 317.0 630.0 316.9C618.9 316.9 613.9 316.4 608.8 314.9ZM355.0 82.0C339.2 81.7 330.8 81.1 329.4 80.3C325.8 78.2 325.0 73.8 325.0 54.4C325.0 38.8 324.7 35.5 323.1 31.8C318.5 21.1 319.8 13.2 326.4 11.0C330.4 9.7 333.8 10.2 341.8 13.1C346.3 14.7 349.8 15.0 365.8 15.0C382.6 15.0 384.8 15.2 387.7 17.0C390.0 18.3 391.0 19.9 391.4 22.2C392.4 28.7 392.7 76.5 391.7 78.7C390.6 81.3 386.0 83.1 381.6 82.8C379.9 82.7 367.9 82.3 355.0 82.0Z"/></svg></a>
+  <select class="lang" aria-label="언어 선택"><option>한국어</option><option>English</option></select>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__grid"></div>
+  <div class="hero__sq" style="width: 150px; height: 140px; right: -50px; top: 40px"></div>
+  <div class="hero__sq" style="width: 110px; height: 110px; left: -30px; bottom: -30px; background: rgba(50,107,250,.07)"></div>
+  <h1>Beyond Learning,<br><span class="gai">Grow with AI</span></h1>
+  <p>AI가 나를 이해하고,<br>필요한 학습을 먼저 찾아 제안합니다.</p>
+</section>
+
+<!-- 01 FOR ME -->
+<section class="sec" id="forme">
+  <div class="wrap">
+    <span class="pill">For Me <span class="dot">·</span> <span class="ko">AI 개인화 홈</span></span>
+    <h2 class="ttl">학습도 이제 나에게 맞춤!<br><span class="gai">AI로 달라지는 나의 학습 홈</span></h2>
+    <p class="sub">AI가 학습자 프로파일을 분석해 나에게 꼭 맞는 콘텐츠와 학습 환경을 제공해요.</p>
+    <p class="fm__lead">단 1분 Survey로<br>나에게 꼭 맞는 학습 홈이 완성돼요.</p>
+    <div class="fm__flow">
+      <div class="fm__step"><span class="fm__num">01</span><div><h3>1분 서베이</h3><p>나의 직군·직무와 관심사를 알려주세요.</p></div></div>
+      <svg class="i fm__arrow" aria-hidden="true"><use href="#i-arrow"></use></svg>
+      <div class="fm__step"><span class="fm__num">02</span><div><h3>맞춤 학습 홈 완성</h3><p>AI가 나에게 필요한 학습을 추천해요.</p></div></div>
+    </div>
+    <div class="vframe"><video src="media/cic40-forme-52s.mp4" poster="media/cic40-forme-poster.jpg" muted autoplay loop playsinline controls preload="metadata" aria-label="CiC 4.0 소개 영상"></video></div>
+  </div>
+
+  <div class="fx">
+    <div class="wrap"><h3 class="mid">나에게 맞춰 달라지는 학습 경험</h3></div>
+    <div class="fx__txt"><h4>다양한 관점의 큐레이션</h4><p>AI가 수강 이력·관심사·직무를 분석해 나에게 필요한 학습을 주제별로 추천해요.</p></div>
+    <div class="sl" style="margin-top: 8px">
+      <div class="sl__head">
+        <div class="sl__bars" role="group" aria-label="큐레이션 슬라이드 선택">
+          <button type="button" class="sl__bar is-on" data-i="0" aria-label="1번째: 검색이력 분석" aria-current="true"><i></i></button><button type="button" class="sl__bar" data-i="1" aria-label="2번째: 학습이력 분석" aria-current="false"><i></i></button><button type="button" class="sl__bar" data-i="2" aria-label="3번째: 관심사 맞춤 추천" aria-current="false"><i></i></button><button type="button" class="sl__bar" data-i="3" aria-label="4번째: 커리어 스킬 기반" aria-current="false"><i></i></button>
+        </div>
+        <span class="sl__cnt"><b class="sl__now">1</b><span> / 4</span></span>
+      </div>
+      <div class="sl__track">
+        <div class="sl__slide"><div class="cur"><span class="cur__tag">검색이력 분석</span><img src="media/forme-cur1.jpg" alt="SVP 승격입문 과정 사후학습 추천 위젯"></div></div>
+        <div class="sl__slide"><div class="cur"><span class="cur__tag">학습이력 분석</span><img src="media/forme-cur2.jpg" alt="최근 3개월 학습이력 기반 연관 추천 과정 위젯"></div></div>
+        <div class="sl__slide"><div class="cur"><span class="cur__tag">관심사 맞춤 추천</span><img src="media/forme-cur3.jpg" alt="서베이 관심사 기반 맞춤 콘텐츠 위젯"></div></div>
+        <div class="sl__slide"><div class="cur"><span class="cur__tag">커리어 스킬 기반</span><img src="media/forme-cur4.jpg" alt="커리어 스킬 추천 위젯"></div></div>
+      </div>
+    </div>
+
+    <div class="fx__item">
+      <div class="fx__txt"><h4>개인화 학습과 활동 지원</h4><p>자주 쓰는 메뉴와 캠퍼스를 바로가기로 구성해 나만의 학습 홈을 만들 수 있어요.</p></div>
+      <figure class="fx__img"><img src="media/forme-home2.jpg" alt="상단 앱 바로가기 위젯이 강조된 CiC 4.0 For Me 홈 화면"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 02 AI OVERVIEW -->
+<section class="sec as" id="aisearch" style="padding-top: 24px">
+  <div class="wrap">
+    <span class="pill">AI Overview <span class="dot">·</span> <span class="ko">AI 검색 오버뷰</span></span>
+    <h2 class="ttl">말하듯 물어보면,<br><span class="bl">AI가 답과 학습을 찾아줘요!</span></h2>
+    <p class="sub">궁금한 내용을 자유롭게 질문하면, AI가 답변부터 관련 학습 콘텐츠까지 한 번에 추천해요.</p>
+    <button type="button" class="vbtn" id="vopen" aria-haspopup="dialog"><span class="vbtn__play"><svg class="i" aria-hidden="true"><use href="#i-play-fill"></use></svg></span>AI Overview 소개 영상 보기</button>
+    <h3 class="mid" style="margin-top: 44px">AI Overview의 핵심 기능 <small>옆으로 넘겨 확인해 보세요</small></h3>
+  </div>
+  <div class="sl">
+    <div class="sl__head">
+      <div class="sl__bars" role="group" aria-label="핵심 기능 슬라이드 선택">
+        <button type="button" class="sl__bar is-on" data-i="0" aria-label="1번째: 자연어 기반 AI 통합 검색" aria-current="true"><i></i></button><button type="button" class="sl__bar" data-i="1" aria-label="2번째: 맞춤 답변과 학습을 함께 제안" aria-current="false"><i></i></button><button type="button" class="sl__bar" data-i="2" aria-label="3번째: 자연스럽게 이어가는 검색·연관 질문" aria-current="false"><i></i></button>
+      </div>
+      <span class="sl__cnt"><b class="sl__now">1</b><span> / 3</span></span>
+    </div>
+    <div class="sl__track">
+      <div class="sl__slide"><div class="ascard">
+        <div class="ascard__hd"><span class="ascard__ic"><svg class="i" aria-hidden="true"><use href="#i-search"></use></svg></span><h4>자연어 기반 AI 통합 검색</h4></div>
+        <p>키워드 대신 자연스러운 문장으로 질문하면, 검색 의도에 맞는 정보를 표·리스트로 정리해 보여줘요.</p>
+        <div class="shot"><img src="media/as-shot1.jpg" alt="자연어 문장으로 질문한 AI 통합 검색 결과 화면"><span class="mark" style="left: 44.96%; top: 6%; width: 50.71%; height: 5.82%"></span><span class="mark mark--box" style="left: 2.66%; top: 57.65%; width: 96.25%; height: 24.17%"></span></div>
+      </div></div>
+      <div class="sl__slide"><div class="ascard">
+        <div class="ascard__hd"><span class="ascard__ic"><svg class="i" aria-hidden="true"><use href="#i-layers"></use></svg></span><h4>맞춤 답변과 학습을 함께 제안</h4></div>
+        <p>질문 맥락과 개인 프로필을 바탕으로 AI 답변과 학습자료·피드·캠퍼스를 함께 추천해요.</p>
+        <div class="shot"><img src="media/as-shot2.jpg" alt="추천 학습과 추천 피드를 함께 제안하는 AI 검색 결과 화면"><span class="mark mark--box" style="left: 8.91%; top: 6.11%; width: 70.08%; height: 3.78%"></span><span class="mark mark--box" style="left: 11.44%; top: 63.14%; width: 53.28%; height: 3.78%"></span></div>
+      </div></div>
+      <div class="sl__slide"><div class="ascard">
+        <div class="ascard__hd"><span class="ascard__ic"><svg class="i" aria-hidden="true"><use href="#i-message-dots"></use></svg></span><h4>자연스럽게 이어가는 검색·연관 질문</h4></div>
+        <p>조건을 추가하거나 연관 질문을 선택해 검색 맥락을 유지하면서 탐색을 확장할 수 있어요.</p>
+        <div class="shot shot--zoom"><img class="bg" src="media/as-shot3.jpg" alt=""><div class="zoom"><img src="media/as-shot3-a.jpg" alt="어떤 방향으로 더 찾아볼까요? 위젯"><img src="media/as-shot3-b.jpg" alt="이런 주제도 살펴보세요 위젯"></div></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 LEARNING CATALOG -->
+<section class="sec xp" id="explore" style="padding-top: 24px">
+  <div class="wrap">
+    <span class="pill">Learning Catalog <span class="dot">·</span> <span class="ko">학습자료 전체보기</span></span>
+    <h2 class="ttl">찾고 싶은 학습을<br><span class="vi">더 쉽고 빠르게 찾아요!</span></h2>
+    <p class="sub">과정부터 콘텐츠까지 한곳에서 탐색하고, 원하는 조건으로 필요한 학습을 빠르게 찾아보세요.</p>
+  </div>
+  <div class="sl" style="margin-top: 24px">
+    <div class="sl__head">
+      <div class="sl__bars" role="group" aria-label="학습자료 전체보기 기능 슬라이드 선택">
+        <button type="button" class="sl__bar is-on" data-i="0" aria-label="1번째: 모든 학습자료를 한곳에" aria-current="true"><i></i></button><button type="button" class="sl__bar" data-i="1" aria-label="2번째: 원하는 조건으로 간편하게" aria-current="false"><i></i></button><button type="button" class="sl__bar" data-i="2" aria-label="3번째: 선택한 조건을 한눈에" aria-current="false"><i></i></button><button type="button" class="sl__bar" data-i="3" aria-label="4번째: 클릭 없이 상세 정보까지" aria-current="false"><i></i></button>
+      </div>
+      <span class="sl__cnt"><b class="sl__now">1</b><span> / 4</span></span>
+    </div>
+    <div class="sl__track">
+
+      <div class="sl__slide">
+        <div class="xtab"><span class="xtab__n">01</span><div><b>모든 학습자료를 한곳에</b><span>과정·콘텐츠·글로벌 콘텐츠 통합 탐색</span></div></div>
+        <div class="xm">
+          <div class="xm__crumb">학습자료 전체보기 <i>›</i> <b>전체 ▾</b></div>
+          <div class="xm__in">
+            <div class="hl"><p class="xm__lb">카테고리</p><div class="cats"><span class="is-on">전체</span><span>인문/트렌드</span><span>공통 역량</span><span>리더십</span><span>디지털</span><span>글로벌</span></div></div>
+            <p class="xm__t" style="margin-top: 16px">학습자료 전체보기</p>
+            <div class="hl" style="margin-top: 10px"><div class="xtypes"><span class="is-on">전체</span><span>과정</span><span>콘텐츠</span><span>시험</span><span>과제</span><span>퀴즈쇼</span></div></div>
+            <div class="xbar dim"><span class="xcount">총 <b>265</b></span></div>
+            <div class="xgrid dim" style="margin-top: 10px">
+              <div class="xcard"><div class="xcard__th"><img src="media/xp-th1.jpg" alt=""></div><p class="xcard__k">과정 | 온라인 | 초급</p><h5>파이썬 기초부터 실무까지</h5><div class="tg"><i class="t-on">진행중</i><i class="t-reg">수강신청중</i></div></div>
+              <div class="xcard"><div class="xcard__th"><img src="media/xp-th3.jpg" alt=""></div><p class="xcard__k">과정 | 온라인 | 중급</p><h5>비즈니스 영어 이메일 작성법</h5><div class="tg"><i class="t-on">진행중</i></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sl__slide">
+        <div class="xtab"><span class="xtab__n">02</span><div><b>원하는 조건으로 간편하게</b><span>다양한 필터를 조합해 필요한 학습 검색</span></div></div>
+        <div class="xm">
+          <div class="xm__crumb">학습자료 전체보기 <i>›</i> <b>전체 ▾</b></div>
+          <div class="xm__in">
+            <div class="hl">
+              <p class="xm__lb">필터</p>
+              <div class="xgrp"><h6>추천</h6><div class="xbox"><label class="xchk"><input type="checkbox" value="SERICEO"><span>SERICEO</span></label><label class="xchk"><input type="checkbox" value="오픽노잼"><span>오픽노잼</span></label><label class="xchk"><input type="checkbox" value="북라이브"><span>북라이브</span></label></div></div><div class="xgrp"><h6>수강형태</h6><div class="xbox"><label class="xchk"><input type="checkbox" value="온라인" checked><span>온라인</span></label><label class="xchk"><input type="checkbox" value="집합"><span>집합</span></label><label class="xchk"><input type="checkbox" value="블렌디드"><span>블렌디드</span></label></div></div><div class="xgrp"><h6>콘텐츠 유형</h6><div class="xbox"><label class="xchk"><input type="checkbox" value="동영상" checked><span>동영상</span></label><label class="xchk"><input type="checkbox" value="텍스트북"><span>텍스트북</span></label></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sl__slide">
+        <div class="xtab"><span class="xtab__n">03</span><div><b>선택한 조건을 한눈에</b><span>적용한 필터 확인 · 해제 · 초기화</span></div></div>
+        <div class="xm">
+          <div class="xm__crumb">학습자료 전체보기 <i>›</i> <b>전체 ▾</b></div>
+          <div class="xm__in">
+            <p class="xm__t">학습자료 전체보기</p>
+            <div class="xtypes dim" style="margin-top: 10px"><span class="is-on">전체</span><span>과정</span><span>콘텐츠</span><span>시험</span><span>과제</span></div>
+            <div class="hl" style="margin-top: 12px">
+              <div class="xsel" id="xsel"></div>
+            </div>
+            <div class="xbar"><span class="xcount">총 <b id="xcnt">183</b></span><span class="xsearch">학습자료를 찾아보세요<svg class="i" aria-hidden="true"><use href="#i-search"></use></svg></span></div>
+            <div class="xgrid dim" style="margin-top: 12px">
+              <div class="xcard"><div class="xcard__th"><img src="media/xp-th2.jpg" alt=""></div><p class="xcard__k">과정 | 온라인 | 고급</p><h5>우리 회사 조직문화 이해하기: 핵심가치와 일하는 방식</h5><div class="tg"><i class="t-ai">AI Tutor</i><i class="t-on">진행중</i></div></div>
+              <div class="xcard"><div class="xcard__th"><img src="media/xp-th4.jpg" alt=""></div><p class="xcard__k">과정 | 온라인 | 중급</p><h5>업무자동화 첫걸음 스마트워크 입문 과정</h5><div class="tg"><i class="t-ai">AI Tutor</i><i class="t-book">교재제공</i></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sl__slide">
+        <div class="xtab"><span class="xtab__n">04</span><div><b>클릭 없이 상세 정보까지</b><span>마우스를 올려 콘텐츠 주요 정보 미리 확인</span></div></div>
+        <div class="xm">
+          <div class="xm__crumb">학습자료 전체보기 <i>›</i> <b>전체 ▾</b></div>
+          <div class="xm__in">
+            <div class="xgrid">
+              <div class="xcard xcard--dim"><div class="xcard__th"><img src="media/xp-th1.jpg" alt=""></div><p class="xcard__k">과정 | 온라인 | 초급</p><h5>파이썬 기초부터 실무까지</h5><div class="tg"><i class="t-on">진행중</i><i class="t-reg">수강신청중</i></div></div>
+              <div class="xcard xcard--on"><div class="xcard__th"><img src="media/xp-th2.jpg" alt=""></div><p class="xcard__k">과정 | 온라인 | 고급</p><h5>우리 회사 조직문화 이해하기: 핵심가치와 일하는 방식</h5><div class="tg"><i class="t-ai">AI Tutor</i><i class="t-on">진행중</i></div>
+          <div class="xpop">
+            <h5>우리 회사 조직문화 이해하기: 핵심가치와 일하는 방식, 협업 원칙</h5>
+            <p class="xpop__kw">UX/UI · 집합 · 블렌디드 · 이러닝 · 전화외국어 · 키워드</p>
+            <div class="xpop__meta"><span>멀티캠퍼스</span><span>◷ 3시간</span><span>3학점</span></div>
+            <div class="xpop__meta"><span>♥ 1,266</span><span>★ 4.8</span></div>
+            <div class="xpop__meta"><span>최소 10명 ~ 최대 50명</span><em>신청현황</em></div>
+            <ul><li>ChatGPT의 외국어학습 활용에 대해 알고 싶은 학습자</li><li>ChatGPT를 활용하여 효율적인 학습을 원하는 학습자</li></ul>
+            <p class="xpop__ft">모바일학습 · 평가 · 고용보험환급</p>
+            <div class="xpop__btns"><span class="xpop__bm"><svg class="i" aria-hidden="true"><use href="#i-bookmark"></use></svg></span><span class="xpop__go">수강신청</span></div>
+          </div>
+              </div>
+              <div class="xcard xcard--dim"><div class="xcard__th"><img src="media/xp-th3.jpg" alt=""></div><p class="xcard__k">과정 | 온라인 | 중급</p><h5>비즈니스 영어 이메일 작성법</h5><div class="tg"><i class="t-on">진행중</i></div></div>
+              <div class="xcard xcard--dim"><div class="xcard__th"><img src="media/xp-th5.jpg" alt=""></div><p class="xcard__k">과정 | 온라인 | 초급</p><h5>엑셀 데이터 분석과 시각화: 피벗 테이블과 차트</h5><div class="tg"><i class="t-on">진행중</i><i class="t-book">교재제공</i></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 04 CONVENIENCE -->
+<section class="sec mc" id="feed">
+  <div class="wrap">
+    <span class="pill">Convenience <span class="dot">·</span> <span class="ko">더 편리해진 기존 서비스</span></span>
+    <h2 class="ttl">소통하고, 배우고, 기록하고!<br><span class="mb">일상의 학습이 더 편리해져요.</span></h2>
+    <p class="sub">Feed·Campus·My Learning의 새로워진 기능을 만나보세요.</p>
+  </div>
+  <div class="sl" style="margin-top: 24px">
+    <div class="sl__head">
+      <div class="sl__bars" role="group" aria-label="서비스 카드 슬라이드 선택">
+        <button type="button" class="sl__bar is-on" data-i="0" aria-label="1번째: Feed" aria-current="true"><i></i></button><button type="button" class="sl__bar" data-i="1" aria-label="2번째: Campus" aria-current="false"><i></i></button><button type="button" class="sl__bar" data-i="2" aria-label="3번째: My Learning" aria-current="false"><i></i></button>
+      </div>
+      <span class="sl__cnt"><b class="sl__now">1</b><span> / 3</span></span>
+    </div>
+    <div class="sl__track">
+
+      <!-- Feed -->
+      <div class="sl__slide">
+        <div class="mcard">
+          <div class="mcard__body">
+            <div class="mshot"><img class="bg" src="media/mc-feed.jpg" alt="CiC Feed 메인 화면"><span class="zbtn" aria-hidden="true"><span>+</span>피드작성</span><img class="mz mz2" src="media/mc-feed-z2.png" alt=""></div>
+            <h3>Feed</h3>
+            <p class="mcard__intro">언제 어디서든 동료들과 자유롭게 소통해 보세요!</p>
+            <div class="mnew"><span class="mnew__lb">What's New</span><ul><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>다양한 에디터 기능 추가</li></ul></div>
+          </div>
+          <button type="button" class="mmore" data-mc="feed" aria-expanded="false" aria-controls="mdet-feed">자세히 보기 →</button>
+        </div>
+        <div class="mdet" id="mdet-feed" hidden>
+            <span class="mdet__lb">What's New · Feed</span>
+            <h4 class="mdet__t">생각과 정보를 더욱 자유롭게 표현해요!</h4>
+            <div class="mf">
+              <div class="mimg mimg--feed"><img src="media/mcd-feed.jpg" alt="신규 피드 작성 화면"><div class="mtool"><img src="media/mcd-feed-t.png" alt="에디터 도구 모음"></div></div>
+              <span class="mf__no">NEW 01</span><h4>에디터 기능 추가</h4>
+              <p>다양한 에디터 기능으로 피드 내용을 보기 좋게 구성하고, 나만의 개성을 담아 생각과 정보를 공유할 수 있어요.</p>
+            </div>
+          </div>
+      </div>
+
+      <!-- Campus -->
+      <div class="sl__slide">
+        <div class="mcard">
+          <div class="mcard__body">
+            <div class="mshot"><img class="bg" src="media/mc-campus.jpg" alt="Campus 메인 화면"><img class="mz mzc" src="media/mc-campus-z.png" alt="내 캠퍼스 · 즐겨찾는 캠퍼스 영역 확대"><span class="ztx ztx--on" aria-hidden="true">캠퍼스 15</span><span class="ztx ztx--g" aria-hidden="true">그룹 20</span><span class="zpill" aria-hidden="true">즐겨찾기 35</span><span class="zlb" aria-hidden="true">즐겨찾는 캠퍼스<svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z" fill="#2B8AF0"></path></svg></span></div>
+            <h3>Campus</h3>
+            <p class="mcard__intro">함께 나누며 성장하는 즐거움을 경험해 보세요!</p>
+            <div class="mnew"><span class="mnew__lb">What's New</span><ul><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>피드 화면 설정 기능 개선</li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>그룹 관리 기능 개선</li></ul></div>
+          </div>
+          <button type="button" class="mmore" data-mc="campus" aria-expanded="false" aria-controls="mdet-campus">자세히 보기 →</button>
+        </div>
+        <div class="mdet" id="mdet-campus" hidden>
+            <span class="mdet__lb">What's New · Campus</span>
+            <h4 class="mdet__t">캠퍼스 운영도 원하는 방식으로!</h4>
+            <p class="mdet__sub">캠퍼스 운영 목적과 특성에 맞게 화면과 그룹을 구성할 수 있어요.<span class="mdet__note">※ 캠퍼스 운영자에게 제공되는 기능입니다.</span></p>
+            <div class="mf">
+              <div class="mcv">
+                <div class="mcv__opt" role="group" aria-label="피드 목록 유형">
+                  <button type="button" class="mcv__r is-on" data-v="feed" aria-pressed="true"><i></i>피드형</button><button type="button" class="mcv__r" data-v="list" aria-pressed="false"><i></i>목록형</button><button type="button" class="mcv__r" data-v="gal" aria-pressed="false"><i></i>갤러리형</button>
+                </div>
+                <div class="mcv__scr"><img class="is-on" data-v="feed" src="media/mcd-cp-feed.jpg" alt="피드형 화면"><img data-v="list" src="media/mcd-cp-list.jpg" alt="목록형 화면"><img data-v="gal" src="media/mcd-cp-gal.jpg" alt="갤러리형 화면"></div>
+              </div>
+              <span class="mf__no">NEW 01</span><h4>피드 화면 설정</h4>
+              <p>피드형·목록형·갤러리형으로 화면을 자유롭게 구성할 수 있어요.</p>
+            </div>
+            <div class="mf">
+              <div class="mimg"><img src="media/mcd-cg.jpg" alt="캠퍼스 그룹 분류 3Depth 화면" style="object-position: left center">
+                <ul class="mgt" aria-label="그룹 분류 3Depth">
+                  <li class="r1"><svg viewBox="0 0 12 12"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>언어 공부</span><span class="ln"></span><span class="tag">1Depth</span></li>
+                  <li class="r2"><b></b><span>일본어 (30)</span></li>
+                  <li class="r2"><b></b><span>중국어 (18)</span></li>
+                  <li class="r2"><svg viewBox="0 0 12 12"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>유럽</span><span class="ln"></span><span class="tag">2Depth</span></li>
+                  <li class="r3"><b></b><span>프랑스어 (16)</span><span class="ln"></span><span class="tag">3Depth</span></li>
+                </ul>
+              </div>
+              <span class="mf__no">NEW 02</span><h4>자유로운 그룹 구성</h4>
+              <p>그룹을 최대 3단계로 세분화하거나, 별도 분류 없이 간단하게 구성할 수 있어요.</p>
+            </div>
+          </div>
+      </div>
+
+      <!-- My Learning -->
+      <div class="sl__slide">
+        <div class="mcard">
+          <div class="mcard__body">
+            <div class="mshot"><img class="bg" src="media/mc-ml.jpg" alt="My Learning 메인 화면">
+              <div class="zml" aria-hidden="true"><div class="zml1"><span>☰ 카테고리</span><i></i><span>Feed</span><span>Class</span><span>Campus</span><span>Language</span><span class="is-on">My Learning</span></div><div class="zml2"><span class="is-on">대시보드</span><span>학습목록</span><span>어학학습 ↗</span><span>필수교육</span><span>스킬추천</span><span>과거학습이력</span><span>학습실적</span><span>진단목록</span><span>학습운영</span><span>자격인증</span><span>리워드</span><span>마일리지</span><span>러닝저니</span><span>보관함</span></div></div>
+            </div>
+            <h3>My Learning</h3>
+            <p class="mcard__intro">나의 모든 학습 현황을 한눈에 확인해 보세요!</p>
+            <div class="mnew"><span class="mnew__lb">What's New</span><ul><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>학습목록 필터 강화</li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>나만의 보관함 신설</li></ul></div>
+          </div>
+          <button type="button" class="mmore" data-mc="ml" aria-expanded="false" aria-controls="mdet-ml">자세히 보기 →</button>
+        </div>
+        <div class="mdet" id="mdet-ml" hidden>
+            <span class="mdet__lb">What's New · My Learning</span>
+            <h4 class="mdet__t">학습 현황부터 관심 자료까지 한곳에서!</h4>
+            <div class="mf">
+              <div class="mimg"><img src="media/mcd-mlf.jpg" alt="학습목록 진행 상태 복수 선택 및 상세 필터 화면"><span class="mlf__mk" style="left: 1.1%; top: 14.9%; width: 38.9%; height: 14.9%"></span><span class="mlf__mk" style="left: 53%; top: 21.8%; width: 45%; height: 76.4%"></span></div>
+              <span class="mf__no">NEW 01</span><h4>학습목록 필터 강화</h4>
+              <p>진행 상태를 복수로 선택하고, 수료 여부·제공처·학습 기간 등 다양한 조건으로 원하는 학습목록을 확인할 수 있어요.</p>
+            </div>
+            <div class="mf">
+              <div class="mimg"><img src="media/mcd-mlb.jpg" alt="나만의 보관함 · 피드 화면"><span class="mlb__bm" style="left: 28.9%; top: 42.1%"><svg viewBox="0 0 12 14"><path d="M1.5 1.5h9v11L6 9.6 1.5 12.5z" fill="#2F80ED"></path></svg></span><span class="mlb__bm" style="left: 62.3%; top: 42.1%"><svg viewBox="0 0 12 14"><path d="M1.5 1.5h9v11L6 9.6 1.5 12.5z" fill="#2F80ED"></path></svg></span><span class="mlb__bm" style="left: 95.6%; top: 42.1%"><svg viewBox="0 0 12 14"><path d="M1.5 1.5h9v11L6 9.6 1.5 12.5z" fill="#2F80ED"></path></svg></span></div>
+              <span class="mf__no">NEW 02</span><h4>나만의 보관함 신설</h4>
+              <p>찜한 과정·콘텐츠·피드를 한곳에 모아두고, 필요할 때 언제든 다시 확인할 수 있어요.</p>
+            </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL -->
+<section class="sec" id="global">
+  <div class="wrap">
+    <span class="pill">Global Learning <span class="dot">·</span> <span class="ko">글로벌 지원</span></span>
+    <h2 class="ttl">국내를 넘어 글로벌로,<br><span class="gp">배움의 범위가 넓어져요!</span></h2>
+    <p class="sub">다양한 언어 지원을 통해 더 많은 임직원이 편리하게 학습할 수 있어요.</p>
+    <div class="vframe"><video src="media/cic40-global.mp4" poster="media/cic40-global-poster.jpg" muted autoplay loop playsinline controls preload="metadata" aria-label="CiC 4.0 다국어 지원 확대 영상"></video></div>
+    <div style="margin-top: 8px">
+      <div class="gstat">
+        <span class="gstat__ic"><svg class="i" aria-hidden="true"><use href="#i-languages"></use></svg></span>
+        <strong><span class="from">4 →</span> 13<em>개 언어</em></strong>
+        <h3>지원 언어 확대</h3>
+        <p>기존 4개 언어에서 13개 언어로 확대되어 나에게 익숙한 언어로 학습할 수 있어요.</p>
+      </div>
+      <div class="gstat">
+        <span class="gstat__ic"><svg class="i" aria-hidden="true"><use href="#i-captions"></use></svg></span>
+        <strong>Upgrade</strong>
+        <h3>자막 · 실시간 번역 품질 향상</h3>
+        <p>영상 자막과 실시간 번역 품질을 높여 글로벌 임직원 간 원활한 소통을 지원해요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="start">
+  <p class="start__en">START YOUR LEARNING WITH CiC</p>
+  <h2>새로운 CiC에서<br>나만의 배움을 시작하세요.</h2>
+  <a href="https://platform.samsungcic.com/#/home" target="_blank" rel="noopener">CiC 학습 시작하기<svg class="i" aria-hidden="true"><use href="#i-arrow-ur"></use></svg></a>
+</div>
+
+<section class="app" id="app">
+  <p class="app__en">Mobile App</p>
+  <h2>모바일 APP에서<br>더 자주 편리하게 CiC를 만나보세요</h2>
+  <div class="qrs">
+    <div class="qr"><svg class="qrcode" viewBox="0 0 29 29" shape-rendering="crispEdges" role="img" aria-label="QR 코드"><path fill="#10112D" d="M0 0h1v1h-1zM1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM8 0h1v1h-1zM11 0h1v1h-1zM13 0h1v1h-1zM14 0h1v1h-1zM16 0h1v1h-1zM17 0h1v1h-1zM18 0h1v1h-1zM22 0h1v1h-1zM23 0h1v1h-1zM24 0h1v1h-1zM25 0h1v1h-1zM26 0h1v1h-1zM27 0h1v1h-1zM28 0h1v1h-1zM0 1h1v1h-1zM6 1h1v1h-1zM10 1h1v1h-1zM11 1h1v1h-1zM12 1h1v1h-1zM13 1h1v1h-1zM14 1h1v1h-1zM15 1h1v1h-1zM17 1h1v1h-1zM19 1h1v1h-1zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM9 2h1v1h-1zM10 2h1v1h-1zM11 2h1v1h-1zM12 2h1v1h-1zM14 2h1v1h-1zM17 2h1v1h-1zM20 2h1v1h-1zM22 2h1v1h-1zM24 2h1v1h-1zM25 2h1v1h-1zM26 2h1v1h-1zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM6 3h1v1h-1zM8 3h1v1h-1zM9 3h1v1h-1zM10 3h1v1h-1zM18 3h1v1h-1zM20 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM25 3h1v1h-1zM26 3h1v1h-1zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM6 4h1v1h-1zM8 4h1v1h-1zM12 4h1v1h-1zM18 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM25 4h1v1h-1zM26 4h1v1h-1zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM16 5h1v1h-1zM17 5h1v1h-1zM19 5h1v1h-1zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM23 6h1v1h-1zM24 6h1v1h-1zM25 6h1v1h-1zM26 6h1v1h-1zM27 6h1v1h-1zM28 6h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM11 7h1v1h-1zM13 7h1v1h-1zM15 7h1v1h-1zM16 7h1v1h-1zM17 7h1v1h-1zM18 7h1v1h-1zM19 7h1v1h-1zM0 8h1v1h-1zM4 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM9 8h1v1h-1zM11 8h1v1h-1zM13 8h1v1h-1zM17 8h1v1h-1zM19 8h1v1h-1zM21 8h1v1h-1zM22 8h1v1h-1zM23 8h1v1h-1zM24 8h1v1h-1zM25 8h1v1h-1zM28 8h1v1h-1zM2 9h1v1h-1zM7 9h1v1h-1zM8 9h1v1h-1zM10 9h1v1h-1zM11 9h1v1h-1zM12 9h1v1h-1zM13 9h1v1h-1zM14 9h1v1h-1zM16 9h1v1h-1zM18 9h1v1h-1zM22 9h1v1h-1zM23 9h1v1h-1zM24 9h1v1h-1zM25 9h1v1h-1zM26 9h1v1h-1zM27 9h1v1h-1zM28 9h1v1h-1zM0 10h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM6 10h1v1h-1zM9 10h1v1h-1zM10 10h1v1h-1zM11 10h1v1h-1zM12 10h1v1h-1zM16 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM23 10h1v1h-1zM28 10h1v1h-1zM0 11h1v1h-1zM1 11h1v1h-1zM3 11h1v1h-1zM4 11h1v1h-1zM7 11h1v1h-1zM8 11h1v1h-1zM9 11h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM14 11h1v1h-1zM17 11h1v1h-1zM18 11h1v1h-1zM20 11h1v1h-1zM21 11h1v1h-1zM25 11h1v1h-1zM27 11h1v1h-1zM28 11h1v1h-1zM2 12h1v1h-1zM3 12h1v1h-1zM5 12h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM11 12h1v1h-1zM13 12h1v1h-1zM14 12h1v1h-1zM15 12h1v1h-1zM16 12h1v1h-1zM17 12h1v1h-1zM20 12h1v1h-1zM21 12h1v1h-1zM23 12h1v1h-1zM27 12h1v1h-1zM0 13h1v1h-1zM3 13h1v1h-1zM4 13h1v1h-1zM10 13h1v1h-1zM17 13h1v1h-1zM18 13h1v1h-1zM22 13h1v1h-1zM23 13h1v1h-1zM24 13h1v1h-1zM25 13h1v1h-1zM26 13h1v1h-1zM27 13h1v1h-1zM28 13h1v1h-1zM1 14h1v1h-1zM4 14h1v1h-1zM6 14h1v1h-1zM8 14h1v1h-1zM10 14h1v1h-1zM11 14h1v1h-1zM13 14h1v1h-1zM14 14h1v1h-1zM15 14h1v1h-1zM17 14h1v1h-1zM20 14h1v1h-1zM25 14h1v1h-1zM26 14h1v1h-1zM28 14h1v1h-1zM0 15h1v1h-1zM1 15h1v1h-1zM2 15h1v1h-1zM3 15h1v1h-1zM8 15h1v1h-1zM11 15h1v1h-1zM13 15h1v1h-1zM15 15h1v1h-1zM16 15h1v1h-1zM17 15h1v1h-1zM18 15h1v1h-1zM23 15h1v1h-1zM27 15h1v1h-1zM28 15h1v1h-1zM0 16h1v1h-1zM1 16h1v1h-1zM2 16h1v1h-1zM3 16h1v1h-1zM4 16h1v1h-1zM6 16h1v1h-1zM7 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM13 16h1v1h-1zM17 16h1v1h-1zM19 16h1v1h-1zM20 16h1v1h-1zM21 16h1v1h-1zM27 16h1v1h-1zM0 17h1v1h-1zM1 17h1v1h-1zM3 17h1v1h-1zM7 17h1v1h-1zM12 17h1v1h-1zM13 17h1v1h-1zM14 17h1v1h-1zM16 17h1v1h-1zM18 17h1v1h-1zM21 17h1v1h-1zM22 17h1v1h-1zM23 17h1v1h-1zM24 17h1v1h-1zM25 17h1v1h-1zM27 17h1v1h-1zM28 17h1v1h-1zM2 18h1v1h-1zM4 18h1v1h-1zM5 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM9 18h1v1h-1zM10 18h1v1h-1zM12 18h1v1h-1zM16 18h1v1h-1zM20 18h1v1h-1zM21 18h1v1h-1zM22 18h1v1h-1zM23 18h1v1h-1zM26 18h1v1h-1zM28 18h1v1h-1zM2 19h1v1h-1zM5 19h1v1h-1zM8 19h1v1h-1zM9 19h1v1h-1zM12 19h1v1h-1zM14 19h1v1h-1zM17 19h1v1h-1zM18 19h1v1h-1zM19 19h1v1h-1zM21 19h1v1h-1zM24 19h1v1h-1zM27 19h1v1h-1zM28 19h1v1h-1zM0 20h1v1h-1zM1 20h1v1h-1zM3 20h1v1h-1zM4 20h1v1h-1zM5 20h1v1h-1zM6 20h1v1h-1zM7 20h1v1h-1zM8 20h1v1h-1zM10 20h1v1h-1zM11 20h1v1h-1zM12 20h1v1h-1zM13 20h1v1h-1zM14 20h1v1h-1zM15 20h1v1h-1zM17 20h1v1h-1zM18 20h1v1h-1zM19 20h1v1h-1zM20 20h1v1h-1zM21 20h1v1h-1zM22 20h1v1h-1zM23 20h1v1h-1zM24 20h1v1h-1zM25 20h1v1h-1zM28 20h1v1h-1zM8 21h1v1h-1zM9 21h1v1h-1zM11 21h1v1h-1zM12 21h1v1h-1zM17 21h1v1h-1zM18 21h1v1h-1zM20 21h1v1h-1zM24 21h1v1h-1zM28 21h1v1h-1zM0 22h1v1h-1zM1 22h1v1h-1zM2 22h1v1h-1zM3 22h1v1h-1zM4 22h1v1h-1zM5 22h1v1h-1zM6 22h1v1h-1zM8 22h1v1h-1zM9 22h1v1h-1zM10 22h1v1h-1zM12 22h1v1h-1zM13 22h1v1h-1zM14 22h1v1h-1zM15 22h1v1h-1zM18 22h1v1h-1zM19 22h1v1h-1zM20 22h1v1h-1zM22 22h1v1h-1zM24 22h1v1h-1zM25 22h1v1h-1zM26 22h1v1h-1zM28 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM9 23h1v1h-1zM11 23h1v1h-1zM12 23h1v1h-1zM13 23h1v1h-1zM15 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM20 23h1v1h-1zM24 23h1v1h-1zM0 24h1v1h-1zM2 24h1v1h-1zM3 24h1v1h-1zM4 24h1v1h-1zM6 24h1v1h-1zM8 24h1v1h-1zM9 24h1v1h-1zM12 24h1v1h-1zM13 24h1v1h-1zM15 24h1v1h-1zM17 24h1v1h-1zM19 24h1v1h-1zM20 24h1v1h-1zM21 24h1v1h-1zM22 24h1v1h-1zM23 24h1v1h-1zM24 24h1v1h-1zM25 24h1v1h-1zM27 24h1v1h-1zM28 24h1v1h-1zM0 25h1v1h-1zM2 25h1v1h-1zM3 25h1v1h-1zM4 25h1v1h-1zM6 25h1v1h-1zM9 25h1v1h-1zM11 25h1v1h-1zM14 25h1v1h-1zM15 25h1v1h-1zM16 25h1v1h-1zM18 25h1v1h-1zM19 25h1v1h-1zM21 25h1v1h-1zM27 25h1v1h-1zM0 26h1v1h-1zM2 26h1v1h-1zM3 26h1v1h-1zM4 26h1v1h-1zM6 26h1v1h-1zM9 26h1v1h-1zM10 26h1v1h-1zM11 26h1v1h-1zM12 26h1v1h-1zM13 26h1v1h-1zM15 26h1v1h-1zM19 26h1v1h-1zM20 26h1v1h-1zM21 26h1v1h-1zM25 26h1v1h-1zM26 26h1v1h-1zM27 26h1v1h-1zM28 26h1v1h-1zM0 27h1v1h-1zM6 27h1v1h-1zM9 27h1v1h-1zM10 27h1v1h-1zM13 27h1v1h-1zM17 27h1v1h-1zM18 27h1v1h-1zM20 27h1v1h-1zM23 27h1v1h-1zM25 27h1v1h-1zM27 27h1v1h-1zM28 27h1v1h-1zM0 28h1v1h-1zM1 28h1v1h-1zM2 28h1v1h-1zM3 28h1v1h-1zM4 28h1v1h-1zM5 28h1v1h-1zM6 28h1v1h-1zM8 28h1v1h-1zM9 28h1v1h-1zM10 28h1v1h-1zM11 28h1v1h-1zM12 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM17 28h1v1h-1zM19 28h1v1h-1zM20 28h1v1h-1zM21 28h1v1h-1zM24 28h1v1h-1zM27 28h1v1h-1z"/></svg><strong>Android</strong></div>
+    <div class="qr"><svg class="qrcode" viewBox="0 0 29 29" shape-rendering="crispEdges" role="img" aria-label="QR 코드"><path fill="#10112D" d="M0 0h1v1h-1zM1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM10 0h1v1h-1zM12 0h1v1h-1zM13 0h1v1h-1zM15 0h1v1h-1zM17 0h1v1h-1zM18 0h1v1h-1zM19 0h1v1h-1zM20 0h1v1h-1zM22 0h1v1h-1zM23 0h1v1h-1zM24 0h1v1h-1zM25 0h1v1h-1zM26 0h1v1h-1zM27 0h1v1h-1zM28 0h1v1h-1zM0 1h1v1h-1zM6 1h1v1h-1zM10 1h1v1h-1zM11 1h1v1h-1zM12 1h1v1h-1zM13 1h1v1h-1zM14 1h1v1h-1zM15 1h1v1h-1zM16 1h1v1h-1zM17 1h1v1h-1zM20 1h1v1h-1zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM8 2h1v1h-1zM9 2h1v1h-1zM12 2h1v1h-1zM13 2h1v1h-1zM16 2h1v1h-1zM18 2h1v1h-1zM20 2h1v1h-1zM22 2h1v1h-1zM24 2h1v1h-1zM25 2h1v1h-1zM26 2h1v1h-1zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM6 3h1v1h-1zM8 3h1v1h-1zM9 3h1v1h-1zM11 3h1v1h-1zM12 3h1v1h-1zM14 3h1v1h-1zM17 3h1v1h-1zM20 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM25 3h1v1h-1zM26 3h1v1h-1zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM6 4h1v1h-1zM8 4h1v1h-1zM9 4h1v1h-1zM10 4h1v1h-1zM11 4h1v1h-1zM12 4h1v1h-1zM18 4h1v1h-1zM19 4h1v1h-1zM20 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM25 4h1v1h-1zM26 4h1v1h-1zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM9 5h1v1h-1zM11 5h1v1h-1zM15 5h1v1h-1zM17 5h1v1h-1zM20 5h1v1h-1zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM23 6h1v1h-1zM24 6h1v1h-1zM25 6h1v1h-1zM26 6h1v1h-1zM27 6h1v1h-1zM28 6h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM12 7h1v1h-1zM14 7h1v1h-1zM15 7h1v1h-1zM19 7h1v1h-1zM0 8h1v1h-1zM2 8h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM9 8h1v1h-1zM10 8h1v1h-1zM11 8h1v1h-1zM15 8h1v1h-1zM16 8h1v1h-1zM17 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM23 8h1v1h-1zM24 8h1v1h-1zM25 8h1v1h-1zM26 8h1v1h-1zM0 9h1v1h-1zM1 9h1v1h-1zM3 9h1v1h-1zM5 9h1v1h-1zM7 9h1v1h-1zM11 9h1v1h-1zM12 9h1v1h-1zM13 9h1v1h-1zM14 9h1v1h-1zM16 9h1v1h-1zM18 9h1v1h-1zM19 9h1v1h-1zM20 9h1v1h-1zM21 9h1v1h-1zM22 9h1v1h-1zM23 9h1v1h-1zM24 9h1v1h-1zM28 9h1v1h-1zM0 10h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1zM8 10h1v1h-1zM11 10h1v1h-1zM13 10h1v1h-1zM14 10h1v1h-1zM15 10h1v1h-1zM17 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM24 10h1v1h-1zM9 11h1v1h-1zM11 11h1v1h-1zM13 11h1v1h-1zM15 11h1v1h-1zM20 11h1v1h-1zM21 11h1v1h-1zM22 11h1v1h-1zM23 11h1v1h-1zM24 11h1v1h-1zM25 11h1v1h-1zM27 11h1v1h-1zM0 12h1v1h-1zM1 12h1v1h-1zM2 12h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM10 12h1v1h-1zM14 12h1v1h-1zM15 12h1v1h-1zM16 12h1v1h-1zM17 12h1v1h-1zM19 12h1v1h-1zM23 12h1v1h-1zM25 12h1v1h-1zM26 12h1v1h-1zM0 13h1v1h-1zM1 13h1v1h-1zM2 13h1v1h-1zM3 13h1v1h-1zM4 13h1v1h-1zM5 13h1v1h-1zM8 13h1v1h-1zM11 13h1v1h-1zM12 13h1v1h-1zM16 13h1v1h-1zM17 13h1v1h-1zM18 13h1v1h-1zM19 13h1v1h-1zM20 13h1v1h-1zM21 13h1v1h-1zM22 13h1v1h-1zM23 13h1v1h-1zM24 13h1v1h-1zM28 13h1v1h-1zM1 14h1v1h-1zM2 14h1v1h-1zM5 14h1v1h-1zM6 14h1v1h-1zM8 14h1v1h-1zM10 14h1v1h-1zM11 14h1v1h-1zM15 14h1v1h-1zM16 14h1v1h-1zM18 14h1v1h-1zM20 14h1v1h-1zM22 14h1v1h-1zM23 14h1v1h-1zM24 14h1v1h-1zM25 14h1v1h-1zM26 14h1v1h-1zM0 15h1v1h-1zM8 15h1v1h-1zM9 15h1v1h-1zM10 15h1v1h-1zM11 15h1v1h-1zM12 15h1v1h-1zM14 15h1v1h-1zM15 15h1v1h-1zM22 15h1v1h-1zM24 15h1v1h-1zM27 15h1v1h-1zM1 16h1v1h-1zM2 16h1v1h-1zM3 16h1v1h-1zM4 16h1v1h-1zM6 16h1v1h-1zM7 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM12 16h1v1h-1zM15 16h1v1h-1zM17 16h1v1h-1zM25 16h1v1h-1zM26 16h1v1h-1zM0 17h1v1h-1zM7 17h1v1h-1zM8 17h1v1h-1zM12 17h1v1h-1zM13 17h1v1h-1zM14 17h1v1h-1zM16 17h1v1h-1zM18 17h1v1h-1zM19 17h1v1h-1zM20 17h1v1h-1zM22 17h1v1h-1zM23 17h1v1h-1zM24 17h1v1h-1zM26 17h1v1h-1zM28 17h1v1h-1zM0 18h1v1h-1zM2 18h1v1h-1zM3 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM10 18h1v1h-1zM11 18h1v1h-1zM13 18h1v1h-1zM14 18h1v1h-1zM15 18h1v1h-1zM16 18h1v1h-1zM17 18h1v1h-1zM18 18h1v1h-1zM20 18h1v1h-1zM21 18h1v1h-1zM24 18h1v1h-1zM26 18h1v1h-1zM0 19h1v1h-1zM3 19h1v1h-1zM7 19h1v1h-1zM10 19h1v1h-1zM11 19h1v1h-1zM12 19h1v1h-1zM13 19h1v1h-1zM16 19h1v1h-1zM19 19h1v1h-1zM21 19h1v1h-1zM22 19h1v1h-1zM23 19h1v1h-1zM27 19h1v1h-1zM0 20h1v1h-1zM4 20h1v1h-1zM6 20h1v1h-1zM8 20h1v1h-1zM9 20h1v1h-1zM14 20h1v1h-1zM17 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM21 20h1v1h-1zM22 20h1v1h-1zM23 20h1v1h-1zM24 20h1v1h-1zM26 20h1v1h-1zM27 20h1v1h-1zM28 20h1v1h-1zM8 21h1v1h-1zM9 21h1v1h-1zM10 21h1v1h-1zM11 21h1v1h-1zM12 21h1v1h-1zM17 21h1v1h-1zM18 21h1v1h-1zM19 21h1v1h-1zM20 21h1v1h-1zM24 21h1v1h-1zM25 21h1v1h-1zM26 21h1v1h-1zM27 21h1v1h-1zM28 21h1v1h-1zM0 22h1v1h-1zM1 22h1v1h-1zM2 22h1v1h-1zM3 22h1v1h-1zM4 22h1v1h-1zM5 22h1v1h-1zM6 22h1v1h-1zM10 22h1v1h-1zM12 22h1v1h-1zM15 22h1v1h-1zM16 22h1v1h-1zM17 22h1v1h-1zM19 22h1v1h-1zM20 22h1v1h-1zM22 22h1v1h-1zM24 22h1v1h-1zM25 22h1v1h-1zM26 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h1v1h-1zM14 23h1v1h-1zM15 23h1v1h-1zM16 23h1v1h-1zM18 23h1v1h-1zM19 23h1v1h-1zM20 23h1v1h-1zM24 23h1v1h-1zM27 23h1v1h-1zM0 24h1v1h-1zM2 24h1v1h-1zM3 24h1v1h-1zM4 24h1v1h-1zM6 24h1v1h-1zM8 24h1v1h-1zM9 24h1v1h-1zM11 24h1v1h-1zM17 24h1v1h-1zM20 24h1v1h-1zM21 24h1v1h-1zM22 24h1v1h-1zM23 24h1v1h-1zM24 24h1v1h-1zM26 24h1v1h-1zM0 25h1v1h-1zM2 25h1v1h-1zM3 25h1v1h-1zM4 25h1v1h-1zM6 25h1v1h-1zM8 25h1v1h-1zM9 25h1v1h-1zM11 25h1v1h-1zM13 25h1v1h-1zM14 25h1v1h-1zM16 25h1v1h-1zM18 25h1v1h-1zM20 25h1v1h-1zM25 25h1v1h-1zM26 25h1v1h-1zM27 25h1v1h-1zM28 25h1v1h-1zM0 26h1v1h-1zM2 26h1v1h-1zM3 26h1v1h-1zM4 26h1v1h-1zM6 26h1v1h-1zM8 26h1v1h-1zM9 26h1v1h-1zM10 26h1v1h-1zM12 26h1v1h-1zM13 26h1v1h-1zM14 26h1v1h-1zM15 26h1v1h-1zM16 26h1v1h-1zM17 26h1v1h-1zM18 26h1v1h-1zM19 26h1v1h-1zM20 26h1v1h-1zM21 26h1v1h-1zM22 26h1v1h-1zM23 26h1v1h-1zM24 26h1v1h-1zM25 26h1v1h-1zM26 26h1v1h-1zM27 26h1v1h-1zM0 27h1v1h-1zM6 27h1v1h-1zM12 27h1v1h-1zM16 27h1v1h-1zM20 27h1v1h-1zM22 27h1v1h-1zM24 27h1v1h-1zM25 27h1v1h-1zM27 27h1v1h-1zM0 28h1v1h-1zM1 28h1v1h-1zM2 28h1v1h-1zM3 28h1v1h-1zM4 28h1v1h-1zM5 28h1v1h-1zM6 28h1v1h-1zM8 28h1v1h-1zM13 28h1v1h-1zM14 28h1v1h-1zM17 28h1v1h-1zM24 28h1v1h-1zM25 28h1v1h-1zM26 28h1v1h-1z"/></svg><strong>iOS</strong></div>
+  </div>
+</section>
+
+
+  <div class="vm" id="vmodal" hidden role="dialog" aria-modal="true" aria-label="AI Overview 소개 영상">
+    <div class="vm__dim" data-vclose></div>
+    <div class="vm__box">
+      <button type="button" class="vm__x" data-vclose aria-label="영상 닫기"><svg class="i" aria-hidden="true"><use href="#i-x"></use></svg></button>
+      <video src="media/cic40-aisearch.mp4" poster="media/cic40-aisearch-poster.jpg" controls playsinline preload="none"></video>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  // 슬라이더: 스와이프 ↔ 상단 바 동기화
+  document.querySelectorAll('.sl').forEach(function(sl){
+    var track=sl.querySelector('.sl__track'),bars=sl.querySelectorAll('.sl__bar'),now=sl.querySelector('.sl__now');
+    function pl(){return parseFloat(getComputedStyle(track).paddingLeft)||0}
+    function set(i){bars.forEach(function(b,j){b.classList.toggle('is-on',i===j);b.setAttribute('aria-current',i===j?'true':'false')});if(now)now.textContent=i+1}
+    var t=null;
+    track.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(function(){
+      var best=0,bd=Infinity,p=pl();
+      for(var i=0;i<track.children.length;i++){var d=Math.abs(track.children[i].offsetLeft-p-track.scrollLeft);if(d<bd){bd=d;best=i}}
+      set(best)},50)},{passive:true});
+    bars.forEach(function(b,i){b.addEventListener('click',function(){var c=track.children[i];if(c)track.scrollTo({left:c.offsetLeft-pl(),behavior:'smooth'});set(i)})});
+  });
+  // 영상 자동재생(음소거)
+  document.querySelectorAll('.vframe video').forEach(function(v){v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){})});
+  // AI Overview 영상 모달
+  var m=document.getElementById('vmodal'),mv=m.querySelector('video');
+  document.getElementById('vopen').addEventListener('click',function(){m.hidden=false;try{mv.currentTime=0;var p=mv.play();if(p&&p.catch)p.catch(function(){})}catch(e){}});
+  m.querySelectorAll('[data-vclose]').forEach(function(b){b.addEventListener('click',function(){mv.pause();m.hidden=true})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden){mv.pause();m.hidden=true}});
+  // Learning Catalog 필터 → 선택 조건
+  var boxes=[].slice.call(document.querySelectorAll('.xchk input')),sel=document.getElementById('xsel'),cnt=document.getElementById('xcnt');
+  var X='<svg class="i" aria-hidden="true"><use href="#i-x"></use></svg>';
+  var R='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"></path></svg>';
+  function render(){var on=boxes.filter(function(b){return b.checked});
+    cnt.textContent=Math.max(12,265-on.length*41).toLocaleString();
+    sel.innerHTML=on.length?on.map(function(b,i){return '<button type="button" class="chip" data-i="'+i+'" aria-label="'+b.value+' 조건 해제">'+b.value+X+'</button>'}).join('')+'<button type="button" class="reset">'+R+'전체해제</button>':'<span class="xsel__none">이전 화면의 필터에서 조건을 선택해 보세요</span>';
+    sel.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){on[+c.dataset.i].checked=false;render()})});
+    var r=sel.querySelector('.reset');if(r)r.addEventListener('click',function(){boxes.forEach(function(b){b.checked=false});render()});}
+  boxes.forEach(function(b){b.addEventListener('change',render)});render();
+  // Convenience: 자세히 보기 → 카드 바로 아래 상세
+  document.querySelectorAll('.mmore').forEach(function(b){b.addEventListener('click',function(){
+    var d=document.getElementById('mdet-'+b.dataset.mc),open=d.hidden;d.hidden=!open;
+    b.classList.toggle('is-on',open);b.setAttribute('aria-expanded',open);b.textContent=open?'접기 ↑':'자세히 보기 →'})});
+  // Campus 피드 화면 설정: 유형 전환(자동 + 클릭)
+  var w=document.querySelector('.mcv');if(w){var ks=['feed','list','gal'],cur=0;
+    function go(k){cur=ks.indexOf(k);w.querySelectorAll('.mcv__r').forEach(function(r){var on=r.dataset.v===k;r.classList.toggle('is-on',on);r.setAttribute('aria-pressed',on)});w.querySelectorAll('.mcv__scr img').forEach(function(i){i.classList.toggle('is-on',i.dataset.v===k)})}
+    w.querySelectorAll('.mcv__r').forEach(function(r){r.addEventListener('click',function(){go(r.dataset.v)})});
+    setInterval(function(){if(!document.getElementById('mdet-campus').hidden)go(ks[(cur+1)%3])},2600)}
+})();
+</script>
+</body>
+</html>
